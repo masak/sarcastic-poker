@@ -69,14 +69,12 @@
             $(event.target).toggleClass("to-be-discarded");
         });
 
-        $("button").on("click", (event) => {
-            for (let cardNode of $("img")) {
-                if ($(cardNode).hasClass("to-be-discarded")) {
-                    let card = deckOfCards.pop();
-                    $(cardNode)
-                        .attr("src", `images/${card}.png`)
-                        .removeClass("to-be-discarded");
-                }
+        $("button").on("click", () => {
+            for (let cardNode of $("img.to-be-discarded")) {
+                let card = deckOfCards.pop();
+                $(cardNode)
+                    .attr("src", `images/${card}.png`)
+                    .removeClass("to-be-discarded");
             }
             
         });
