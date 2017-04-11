@@ -30,7 +30,7 @@
         height: 161px;
       }
 
-      img.to-be-discarded {
+      img.discard {
         position: relative;
         top: -20px;
       }
@@ -66,15 +66,15 @@
         }
 
         $("body").on("click", "img", (event) => {
-            $(event.target).toggleClass("to-be-discarded");
+            $(event.target).toggleClass("discard");
         });
 
         $("button").on("click", () => {
-            for (let cardNode of $("img.to-be-discarded")) {
+            for (let cardNode of $("img.discard")) {
                 let card = deckOfCards.pop();
                 $(cardNode)
                     .attr("src", `images/${card}.png`)
-                    .removeClass("to-be-discarded");
+                    .removeClass("discard");
             }
             
         });
