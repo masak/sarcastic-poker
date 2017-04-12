@@ -60,9 +60,13 @@
 
         deckOfCards = _.shuffle(deckOfCards);
 
-        for (let cardNode of $("img")) {
+        function deal(cardNode) {
             let card = deckOfCards.pop();
             $(cardNode).attr("src", `images/${card}.png`);
+        }
+
+        for (let cardNode of $("img")) {
+            deal(cardNode);
         }
 
         $("body").on("click", "img", (event) => {
@@ -71,12 +75,9 @@
 
         $("button").on("click", () => {
             for (let cardNode of $("img.discard")) {
-                let card = deckOfCards.pop();
-                $(cardNode)
-                    .attr("src", `images/${card}.png`)
-                    .removeClass("discard");
+                deal(cardNode);
             }
-            
+            $("img.discard").removeClass("discard");
         });
     </script>
   </body>
